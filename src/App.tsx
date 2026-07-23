@@ -6,6 +6,7 @@ import { ArrowDownRight, ArrowUpRight, Briefcase, Check, Copy, Home, Mail, Moon,
 import CursorGrid from './components/CursorGrid'
 import Dock from './components/Dock'
 import Folder from './components/Folder'
+import SideRays from './components/SideRays'
 
 const projects = [
   { no: '01', title: 'Oxyzen', type: 'Employment engagement platform', text: 'A responsive product experience powered by React context, TanStack Query, reusable hooks, and GraphQL data flows.', tags: ['React', 'TypeScript', 'GraphQL'], art: 'oxy', url: 'https://www.oxyzen.app/' },
@@ -101,8 +102,22 @@ export default function App() {
     </div>
     <aside className="customizer"><button onClick={()=>setLight(!light)} aria-label="Switch colour mode">{light?<Moon size={17}/>:<Sun size={17}/>}</button><div className="divider" />{accents.map(a=><button key={a.name} aria-label={`${a.name} accent`} className={`swatch ${accent.name===a.name?'active':''}`} style={{background:a.value}} onClick={()=>setAccent(a)} />)}</aside>
     <section id="top" className="hero">
+      <div className="hero-rays" aria-hidden="true">
+        <SideRays
+          speed={1.6}
+          rayColor1={accent.value}
+          rayColor2={light ? '#a8b4c4' : '#6e7f96'}
+          intensity={light ? 1.8 : 2.6}
+          spread={2.1}
+          origin="top-right"
+          tilt={-4}
+          saturation={accent.name === 'Mono' ? 0.65 : 1.35}
+          blend={0.55}
+          falloff={1.45}
+          opacity={light ? 0.75 : 0.95}
+        />
+      </div>
       <div className="orb one" aria-hidden="true" />
-      <div className="orb two" aria-hidden="true" />
       <div className="orbit orbit-a" aria-hidden="true" />
       <div className="orbit orbit-b" aria-hidden="true" />
       <motion.div className="hero-inner" style={{y:heroY}}>
