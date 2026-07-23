@@ -33,11 +33,29 @@ function Magnetic({ children, className = '' }: { children: React.ReactNode, cla
 
 export default function App() {
   const [light, setLight] = useState(false); const [accent, setAccent] = useState(accents[0]); const [copied, setCopied] = useState(false)
+  const [customizerOpen, setCustomizerOpen] = useState(false)
+  const customizerRef = useRef<HTMLElement>(null)
   const [activeHref, setActiveHref] = useState('#top')
   const [cursor, setCursor] = useState({x:-100,y:-100}); const { scrollYProgress } = useScroll(); const progress = useSpring(scrollYProgress, { stiffness: 110, damping: 28 })
   const heroY = useTransform(scrollYProgress, [0,.28], [0,180])
   useEffect(() => { document.documentElement.dataset.theme = light ? 'light' : 'dark'; document.documentElement.style.setProperty('--accent', accent.value) }, [light, accent])
   useEffect(() => { const f=(e:MouseEvent)=>setCursor({x:e.clientX,y:e.clientY}); window.addEventListener('mousemove',f); return()=>window.removeEventListener('mousemove',f) }, [])
+  useEffect(() => {
+    if (!customizerOpen) return
+    const onPointer = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node
+      if (customizerRef.current && !customizerRef.current.contains(target)) setCustomizerOpen(false)
+    }
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setCustomizerOpen(false) }
+    document.addEventListener('mousedown', onPointer)
+    document.addEventListener('touchstart', onPointer)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('mousedown', onPointer)
+      document.removeEventListener('touchstart', onPointer)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [customizerOpen])
   useEffect(() => {
     const sectionIds = ['top', 'work', 'about', 'contact']
     const onScroll = () => {
@@ -100,7 +118,40 @@ export default function App() {
         distance={140}
       />
     </div>
-    <aside className="customizer"><button onClick={()=>setLight(!light)} aria-label="Switch colour mode">{light?<Moon size={17}/>:<Sun size={17}/>}</button><div className="divider" />{accents.map(a=><button key={a.name} aria-label={`${a.name} accent`} className={`swatch ${accent.name===a.name?'active':''}`} style={{background:a.value}} onClick={()=>setAccent(a)} />)}</aside>
+    <aside ref={customizerRef} className={`customizer${customizerOpen ? ' is-open' : ''}`}>
+      <button
+        type="button"
+        className="customizer-fab"
+        aria-label={customizerOpen ? 'Close theme controls' : 'Open theme controls'}
+        aria-expanded={customizerOpen}
+        aria-controls="customizer-panel"
+        onClick={() => setCustomizerOpen((open) => !open)}
+      >
+        <span className="customizer-fab-swatch" style={{ background: accent.value }} />
+      </button>
+      <div
+        id="customizer-panel"
+        className="customizer-panel"
+        role="group"
+        aria-label="Theme and accent"
+        aria-hidden={!customizerOpen}
+        inert={!customizerOpen ? true : undefined}
+      >
+        <button type="button" onClick={() => setLight(!light)} aria-label="Switch colour mode">{light ? <Moon size={17} /> : <Sun size={17} />}</button>
+        <div className="divider" />
+        {accents.map((a) => (
+          <button
+            key={a.name}
+            type="button"
+            aria-label={`${a.name} accent`}
+            aria-pressed={accent.name === a.name}
+            className={`swatch${accent.name === a.name ? ' active' : ''}`}
+            style={{ background: a.value }}
+            onClick={() => setAccent(a)}
+          />
+        ))}
+      </div>
+    </aside>
     <section id="top" className="hero">
       <div className="hero-rays" aria-hidden="true">
         <SideRays
