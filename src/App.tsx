@@ -95,7 +95,10 @@ export default function App() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const title = document.querySelector<HTMLElement>('.hero h1')
     if (!title || title.dataset.split === 'true') return
-    const walker = document.createTreeWalker(title, NodeFilter.SHOW_TEXT)
+    // Skip <em> — per-letter inline-blocks clip Playfair italic ascenders/descenders on iOS Safari.
+    const walker = document.createTreeWalker(title, NodeFilter.SHOW_TEXT, {
+      acceptNode: (node) => (node.parentElement?.closest('em') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT),
+    })
     const nodes: Text[] = []
     while (walker.nextNode()) nodes.push(walker.currentNode as Text)
     nodes.forEach((node) => {
