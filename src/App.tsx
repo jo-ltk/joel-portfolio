@@ -253,6 +253,13 @@ export default function App() {
       </motion.article>)}</div>
       <div className="freelance-heading"><p className="eyebrow"><i /> Independent work</p><h3>Freelance<br/><em>collaborations.</em></h3><p>A growing collection of live digital experiences made for ambitious brands and teams.</p></div>
       <div className="freelance-grid">{freelanceProjects.map((p,i)=><motion.a className="freelance-card" key={p.title} href={p.url} target="_blank" rel="noreferrer" initial={{opacity:0,y:35}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration:.55,delay:(i%4)*.06}}><span className="freelance-no">{p.no}</span><span className="freelance-arrow"><ArrowUpRight size={19}/></span><SiteMetaPreview url={p.url} /><div className="freelance-meta"><h3>{p.title}</h3><p>{p.type}</p><div className="tags">{p.tags.map(t=><span key={t}>{t}</span>)}</div></div></motion.a>)}</div>
+      <div className="freelance-more">
+        <a className="freelance-more-btn" href="https://github.com/jo-ltk" target="_blank" rel="noreferrer">
+          <span className="freelance-more-label">And more</span>
+          <span className="freelance-more-hint">on GitHub</span>
+          <ArrowUpRight size={16} />
+        </a>
+      </div>
     </section>
     <section id="about" className="about section"><div className="about-number">02</div><div className="about-copy"><p className="eyebrow"><i /> The person behind the pixels</p><h2>Design-trained.<br/><em>Engineering-minded.</em></h2><p className="large">My visual arts background taught me to notice what others skip. Now I bring that instinct to React, Next.js, and TypeScript — shaping product UI that is both useful and unmistakably considered.</p><div className="facts"><div><b>3+</b><span>years shaping digital work</span></div><div><b>∞</b><span>curiosity for better systems</span></div><div><b>01</b><span>creative brain, technical heart</span></div></div></div><div className="about-visual"><div className="portrait"><span>JL</span><div className="portrait-line"/></div><p>BA Visual Arts<br/>MG University</p><p>Now building from<br/>Chennai / Hybrid</p></div></section>
     <section className="capabilities section">
