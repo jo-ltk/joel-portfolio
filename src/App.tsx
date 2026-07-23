@@ -46,16 +46,16 @@ const freelanceProjects = [
 ]
 const accents = [{ name: 'Mono', value: '#d9d9d9' }, { name: 'Blue', value: '#72a7ff' }, { name: 'Lime', value: '#baff5d' }, { name: 'Violet', value: '#b49bff' }]
 const skillItems = [
-  { link: '#contact', text: 'React.js', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&h=360&q=85' },
-  { link: '#contact', text: 'Next.js', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&h=360&q=85' },
-  { link: '#contact', text: 'TypeScript', image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&h=360&q=85' },
-  { link: '#contact', text: 'Tailwind CSS', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&h=360&q=85' },
-  { link: '#contact', text: 'GraphQL', image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&h=360&q=85' },
-  { link: '#contact', text: 'REST APIs', image: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=900&h=360&q=85' },
-  { link: '#contact', text: 'TanStack Query', image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=900&h=360&q=85' },
-  { link: '#contact', text: 'Redux Toolkit', image: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&h=360&q=85' },
-  { link: '#contact', text: 'Generative AI', image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=900&h=360&q=85' },
-  { link: '#contact', text: 'AWS + Docker', image: 'https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#', text: 'React.js', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#', text: 'Next.js', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#', text: 'TypeScript', image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#', text: 'Tailwind CSS', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#', text: 'GraphQL', image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#', text: 'REST APIs', image: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#', text: 'TanStack Query', image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#', text: 'Redux Toolkit', image: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#', text: 'Generative AI', image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#', text: 'AWS + Docker', image: 'https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=900&h=360&q=85' },
 ]
 
 function Magnetic({ children, className = '' }: { children: React.ReactNode, className?: string }) {

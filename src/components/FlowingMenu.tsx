@@ -168,6 +168,13 @@ function MenuItem({
       .to(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' }, 0)
   }
 
+  const handleClick = (ev: MouseEvent<HTMLAnchorElement>) => {
+    // Skills are display-only; keep hash links from jumping the page.
+    if (!link || link === '#' || link.startsWith('#')) {
+      ev.preventDefault()
+    }
+  }
+
   return (
     <div
       className="flowing-menu-item"
@@ -176,7 +183,8 @@ function MenuItem({
     >
       <a
         className="flowing-menu-link"
-        href={link}
+        href={link || '#'}
+        onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         style={{ color: textColor }}
