@@ -7,6 +7,7 @@ import CursorGrid from './components/CursorGrid'
 import Dock from './components/Dock'
 import Folder from './components/Folder'
 import SideRays from './components/SideRays'
+import SiteMetaPreview from './components/SiteMetaPreview'
 
 const projects = [
   { no: '01', title: 'Oxyzen', type: 'Employment engagement platform', text: 'A responsive product experience powered by React context, TanStack Query, reusable hooks, and GraphQL data flows.', tags: ['React', 'TypeScript', 'GraphQL'], art: 'oxy', url: 'https://www.oxyzen.app/' },
@@ -180,8 +181,7 @@ export default function App() {
           <a className="text-link" href="#about">A little more about me <ArrowDownRight size={16}/></a>
         </div>
       </motion.div>
-      <p className="hero-index">Scroll <span>↓</span></p>
-      <p className="sideword">PORTFOLIO / 2026</p>
+     
     </section>
     <section id="work" className="work section"><div className="section-head"><p className="eyebrow"><i /> Selected projects</p><h2>Office work<br/>I’ve helped <em>ship.</em></h2><p>Product platforms and company sites from my office collaborations — clear interfaces, durable systems, pragmatic engineering.</p></div>
       <div className="office-folders">{projects.map((p,i)=><motion.article className="office-folder" key={p.title} initial={{opacity:0,y:36}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:'-8%'}} transition={{duration:.55,delay:i*.08}}>
@@ -217,7 +217,7 @@ export default function App() {
         </div>
       </motion.article>)}</div>
       <div className="freelance-heading"><p className="eyebrow"><i /> Independent work</p><h3>Freelance<br/><em>collaborations.</em></h3><p>A growing collection of live digital experiences made for ambitious brands and teams.</p></div>
-      <div className="freelance-grid">{freelanceProjects.map((p,i)=><motion.a className="freelance-card" key={p.title} href={p.url} target="_blank" rel="noreferrer" initial={{opacity:0,y:35}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration:.55,delay:(i%4)*.06}}><span className="freelance-no">{p.no}</span><span className="freelance-arrow"><ArrowUpRight size={19}/></span><div><h3>{p.title}</h3><p>{p.type}</p></div><div className="tags">{p.tags.map(t=><span key={t}>{t}</span>)}</div></motion.a>)}</div>
+      <div className="freelance-grid">{freelanceProjects.map((p,i)=><motion.a className="freelance-card" key={p.title} href={p.url} target="_blank" rel="noreferrer" initial={{opacity:0,y:35}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration:.55,delay:(i%4)*.06}}><span className="freelance-no">{p.no}</span><span className="freelance-arrow"><ArrowUpRight size={19}/></span><SiteMetaPreview url={p.url} /><div className="freelance-meta"><h3>{p.title}</h3><p>{p.type}</p><div className="tags">{p.tags.map(t=><span key={t}>{t}</span>)}</div></div></motion.a>)}</div>
     </section>
     <section id="about" className="about section"><div className="about-number">02</div><div className="about-copy"><p className="eyebrow"><i /> The person behind the pixels</p><h2>Design-trained.<br/><em>Engineering-minded.</em></h2><p className="large">My visual arts background taught me to notice what others skip. Now I bring that instinct to React, Next.js, and TypeScript — shaping product UI that is both useful and unmistakably considered.</p><div className="facts"><div><b>3+</b><span>years shaping digital work</span></div><div><b>∞</b><span>curiosity for better systems</span></div><div><b>01</b><span>creative brain, technical heart</span></div></div></div><div className="about-visual"><div className="portrait"><span>JL</span><div className="portrait-line"/></div><p>BA Visual Arts<br/>MG University</p><p>Now building from<br/>Chennai / Hybrid</p></div></section>
     <section className="capabilities section"><p className="eyebrow"><i /> What I work with</p><div className="skills">{['React.js','Next.js','TypeScript','Tailwind CSS','GraphQL','REST APIs','TanStack Query','Redux Toolkit','Generative AI','AWS + Docker'].map((x,i)=><motion.div key={x} initial={{opacity:0,x:-30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{delay:i*.035}}><span>{String(i+1).padStart(2,'0')}</span>{x}<ArrowUpRight size={18}/></motion.div>)}</div></section>
