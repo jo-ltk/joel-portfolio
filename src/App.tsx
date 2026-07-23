@@ -5,6 +5,7 @@ import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { ArrowDownRight, ArrowUpRight, Briefcase, Check, Copy, Home, Mail, Moon, Sun, User } from 'lucide-react'
 import CursorGrid from './components/CursorGrid'
 import Dock from './components/Dock'
+import FlowingMenu from './components/FlowingMenu'
 import Folder from './components/Folder'
 import SideRays from './components/SideRays'
 import SiteMetaPreview from './components/SiteMetaPreview'
@@ -44,6 +45,18 @@ const freelanceProjects = [
   { no: 'F08', title: 'Pay Pilot', type: 'Payments product interface', url: 'https://pay-pilot-one.vercel.app/', tags: ['Fintech', 'Product UI'] },
 ]
 const accents = [{ name: 'Mono', value: '#d9d9d9' }, { name: 'Blue', value: '#72a7ff' }, { name: 'Lime', value: '#baff5d' }, { name: 'Violet', value: '#b49bff' }]
+const skillItems = [
+  { link: '#contact', text: 'React.js', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#contact', text: 'Next.js', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#contact', text: 'TypeScript', image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#contact', text: 'Tailwind CSS', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#contact', text: 'GraphQL', image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#contact', text: 'REST APIs', image: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#contact', text: 'TanStack Query', image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#contact', text: 'Redux Toolkit', image: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#contact', text: 'Generative AI', image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=900&h=360&q=85' },
+  { link: '#contact', text: 'AWS + Docker', image: 'https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=900&h=360&q=85' },
+]
 
 function Magnetic({ children, className = '' }: { children: React.ReactNode, className?: string }) {
   const ref = useRef<HTMLAnchorElement>(null)
@@ -242,7 +255,10 @@ export default function App() {
       <div className="freelance-grid">{freelanceProjects.map((p,i)=><motion.a className="freelance-card" key={p.title} href={p.url} target="_blank" rel="noreferrer" initial={{opacity:0,y:35}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration:.55,delay:(i%4)*.06}}><span className="freelance-no">{p.no}</span><span className="freelance-arrow"><ArrowUpRight size={19}/></span><SiteMetaPreview url={p.url} /><div className="freelance-meta"><h3>{p.title}</h3><p>{p.type}</p><div className="tags">{p.tags.map(t=><span key={t}>{t}</span>)}</div></div></motion.a>)}</div>
     </section>
     <section id="about" className="about section"><div className="about-number">02</div><div className="about-copy"><p className="eyebrow"><i /> The person behind the pixels</p><h2>Design-trained.<br/><em>Engineering-minded.</em></h2><p className="large">My visual arts background taught me to notice what others skip. Now I bring that instinct to React, Next.js, and TypeScript — shaping product UI that is both useful and unmistakably considered.</p><div className="facts"><div><b>3+</b><span>years shaping digital work</span></div><div><b>∞</b><span>curiosity for better systems</span></div><div><b>01</b><span>creative brain, technical heart</span></div></div></div><div className="about-visual"><div className="portrait"><span>JL</span><div className="portrait-line"/></div><p>BA Visual Arts<br/>MG University</p><p>Now building from<br/>Chennai / Hybrid</p></div></section>
-    <section className="capabilities section"><p className="eyebrow"><i /> What I work with</p><div className="skills">{['React.js','Next.js','TypeScript','Tailwind CSS','GraphQL','REST APIs','TanStack Query','Redux Toolkit','Generative AI','AWS + Docker'].map((x,i)=><motion.div key={x} initial={{opacity:0,x:-30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{delay:i*.035}}><span>{String(i+1).padStart(2,'0')}</span>{x}<ArrowUpRight size={18}/></motion.div>)}</div></section>
+    <section className="capabilities section">
+      <p className="eyebrow"><i /> What I work with</p>
+      <FlowingMenu items={skillItems} speed={14} />
+    </section>
     <section id="contact" className="contact">
       <div className="contact-grid" aria-hidden="true">
         <CursorGrid
