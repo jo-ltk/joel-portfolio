@@ -9,6 +9,25 @@ import Folder from './components/Folder'
 import SideRays from './components/SideRays'
 import SiteMetaPreview from './components/SiteMetaPreview'
 
+function LinkedinIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  )
+}
+
+function GithubIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+      <path d="M9 18c-4.51 2-5-2-7-2" />
+    </svg>
+  )
+}
+
 const projects = [
   { no: '01', title: 'Oxyzen', type: 'Employment engagement platform', text: 'A responsive product experience powered by React context, TanStack Query, reusable hooks, and GraphQL data flows.', tags: ['React', 'TypeScript', 'GraphQL'], art: 'oxy', url: 'https://www.oxyzen.app/' },
   { no: '02', title: 'AntMascot', type: 'B2B procurement platform', text: 'A clean, accessible interface system built with Next.js, Tailwind, Shadcn and component-first thinking.', tags: ['Next.js', 'Tailwind', 'shadcn/ui'], art: 'ant', url: 'https://v2.antmascot.com/' },
@@ -18,7 +37,7 @@ const freelanceProjects = [
   { no: 'F01', title: 'Joseph', type: 'Brand & commerce website', url: 'https://www.josephco.uk/', tags: ['Web design', 'Commerce'] },
   { no: 'F02', title: 'Shree Developers Group', type: 'Real-estate web presence', url: 'https://shreedevelopersgroup.com', tags: ['Responsive UI', 'Brand'] },
   { no: 'F03', title: 'Globetrek Tours', type: 'Premium travel experience', url: 'https://globetrek-tours-premium-travel-webs.vercel.app/', tags: ['Travel', 'Next.js'] },
-  { no: 'F04', title: 'Flowboard', type: 'Platform experience', url: 'https://flowboard-platform.vercel.app/', tags: ['Platform', 'Frontend'] },
+  { no: 'F04', title: 'DOHaD India', type: 'Research society website', url: 'https://dohadindia.org/', tags: ['Research', 'Web design'] },
   { no: 'F05', title: 'The Pact', type: 'Brand website', url: 'https://thepact.in/', tags: ['Web design', 'UI'] },
   { no: 'F06', title: 'Dress Codes', type: 'Fashion & commerce website', url: 'https://dresscodes.in/', tags: ['Commerce', 'Responsive UI'] },
   { no: 'F07', title: 'World Safari', type: 'Travel website', url: 'https://www.worldsafari.in/', tags: ['Travel', 'UX'] },
@@ -175,7 +194,7 @@ export default function App() {
       <motion.div className="hero-inner" style={{y:heroY}}>
         <p className="eyebrow"><i /> Software engineer · India</p>
         <h1>BUILDING<br/><em>quietly bold</em><br/>digital things.</h1>
-        <p className="hero-copy">I’m Joel Thomas — a frontend-focused software engineer creating clear, high-performing web experiences where technology feels human.</p>
+        <p className="hero-copy">I’m Joel Thomas , a frontend-focused software engineer creating clear, high-performing web experiences where technology feels human.</p>
         <div className="hero-actions">
           <Magnetic className="pill primary">Explore my work <ArrowDownRight size={18}/></Magnetic>
           <a className="text-link" href="#about">A little more about me <ArrowDownRight size={16}/></a>
@@ -245,9 +264,9 @@ export default function App() {
         <div className="contact-bottom">
           <button className="email" onClick={copyEmail}>{copied?<><Check/> Copied</>:<>joelthomas6094@gmail.com <Copy/></>}</button>
           <div className="socials">
-            <a href="https://www.linkedin.com/in/joel-thomas-89152a288/" target="_blank" rel="noreferrer">in LinkedIn</a>
-            <a href="https://github.com/jo-ltk" target="_blank" rel="noreferrer">gh GitHub</a>
-            <a href="mailto:joelthomas6094@gmail.com"><Mail/> Email</a>
+            <a href="https://www.linkedin.com/in/joel-thomas-89152a288/" target="_blank" rel="noreferrer"><LinkedinIcon /> LinkedIn</a>
+            <a href="https://github.com/jo-ltk" target="_blank" rel="noreferrer"><GithubIcon /> GitHub</a>
+            <a href="mailto:joelthomas6094@gmail.com"><Mail size={20} strokeWidth={1.75} /> Email</a>
           </div>
         </div>
       </div>

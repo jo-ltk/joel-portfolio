@@ -5,8 +5,6 @@ import { useEffect, useState } from 'react'
 type Meta = {
   image?: string
   logo?: string
-  title?: string
-  publisher?: string
 }
 
 const hostOf = (url: string) => {
@@ -14,10 +12,10 @@ const hostOf = (url: string) => {
 }
 
 const faviconOf = (url: string) =>
-  `https://www.google.com/s2/favicons?domain=${encodeURIComponent(hostOf(url))}&sz=128`
+  `https://www.google.com/s2/favicons?domain=${encodeURIComponent(hostOf(url))}&sz=64`
 
 const shotOf = (url: string) =>
-  `https://s0.wp.com/mshots/v1/${encodeURIComponent(url)}?w=960&h=640`
+  `https://s0.wp.com/mshots/v1/${encodeURIComponent(url)}?w=1200&h=900`
 
 export default function SiteMetaPreview({ url }: { url: string }) {
   const [meta, setMeta] = useState<Meta | null>(null)
@@ -34,15 +32,10 @@ export default function SiteMetaPreview({ url }: { url: string }) {
         if (!alive) return
         const data = json?.data ?? {}
         const image = data.image?.url as string | undefined
-        setMeta({
-          image,
-          logo: data.logo?.url,
-          title: data.title,
-          publisher: data.publisher,
-        })
+        setMeta({ image, logo: data.logo?.url })
         if (image) setMode('og')
       } catch {
-        /* keep free screenshot / favicon fallback */
+        /* free screenshot / favicon fallback */
       }
     }
     load()
@@ -53,7 +46,7 @@ export default function SiteMetaPreview({ url }: { url: string }) {
   const logo = meta?.logo || faviconOf(url)
 
   return (
-    <div className="freelance-preview" aria-hidden="true">
+    <div className="freelance-cover" aria-hidden="true">
       {src ? (
         <img
           src={src}
@@ -63,16 +56,11 @@ export default function SiteMetaPreview({ url }: { url: string }) {
           onError={() => setMode((m) => (m === 'og' ? 'shot' : 'fallback'))}
         />
       ) : (
-        <div className="freelance-preview-fallback">
-          <img className="freelance-favicon" src={logo} alt="" loading="lazy" />
-          <span className="freelance-host">{host}</span>
-          {meta?.title ? <span className="freelance-og-title">{meta.title}</span> : null}
+        <div className="freelance-cover-fallback">
+          <img src={logo} alt="" loading="lazy" />
+          <span>{host}</span>
         </div>
       )}
-      <div className="freelance-preview-chip">
-        <img src={faviconOf(url)} alt="" />
-        <span>{host}</span>
-      </div>
     </div>
   )
 }
