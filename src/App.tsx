@@ -33,7 +33,7 @@ function Magnetic({ children, className = '' }: { children: React.ReactNode, cla
 
 export default function App() {
   const [light, setLight] = useState(false); const [accent, setAccent] = useState(accents[0]); const [copied, setCopied] = useState(false)
-  const [customizerOpen, setCustomizerOpen] = useState(false)
+  const [customizerOpen, setCustomizerOpen] = useState(true)
   const customizerRef = useRef<HTMLElement>(null)
   const [activeHref, setActiveHref] = useState('#top')
   const [cursor, setCursor] = useState({x:-100,y:-100}); const { scrollYProgress } = useScroll(); const progress = useSpring(scrollYProgress, { stiffness: 110, damping: 28 })
@@ -137,7 +137,7 @@ export default function App() {
         aria-hidden={!customizerOpen}
         inert={!customizerOpen ? true : undefined}
       >
-        <button type="button" onClick={() => setLight(!light)} aria-label="Switch colour mode">{light ? <Moon size={17} /> : <Sun size={17} />}</button>
+        <button type="button" className="customizer-mode" onClick={() => setLight(!light)} aria-label="Switch colour mode">{light ? <Moon size={17} strokeWidth={1.75} /> : <Sun size={17} strokeWidth={1.75} />}</button>
         <div className="divider" />
         {accents.map((a) => (
           <button
