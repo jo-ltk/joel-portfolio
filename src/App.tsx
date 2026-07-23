@@ -196,7 +196,7 @@ export default function App() {
       <div className="orbit orbit-b" aria-hidden="true" />
       <motion.div className="hero-inner" style={{y:heroY}}>
         <p className="eyebrow"><i /> Software engineer · India</p>
-        <h1>BUILDING<br/><em>quietly bold</em><br/>digital things.</h1>
+        <h1><span className="hero-line">BUILDING</span><em className="hero-line">quietly bold</em><span className="hero-line">digital things.</span></h1>
         <p className="hero-copy">I’m Joel Thomas , a frontend-focused software engineer creating clear, high-performing web experiences where technology feels human.</p>
         <div className="hero-actions">
           <Magnetic className="pill primary">Explore my work <ArrowDownRight size={18}/></Magnetic>
