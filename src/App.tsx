@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
-import { ArrowDownRight, ArrowUpRight, Briefcase, Check, Copy, Home, Mail, Moon, Sun, User } from 'lucide-react'
+import { ArrowDownRight, ArrowUpRight, Briefcase, Check, Copy, Home, Mail, Moon, Phone, Sun, User } from 'lucide-react'
 import CursorGrid from './components/CursorGrid'
 import Dock from './components/Dock'
 import FlowingMenu from './components/FlowingMenu'
@@ -35,14 +35,15 @@ const projects = [
   { no: '03', title: 'GuhaTek', type: 'Corporate web experience', text: 'The official company website: performant, responsive, and built to evolve with the business.', tags: ['Next.js', 'REST APIs', 'Performance'], art: 'guha', url: 'https://www.guhatek.com/' },
 ]
 const freelanceProjects = [
-  { no: 'F01', title: 'Joseph', type: 'Brand & commerce website', url: 'https://www.josephco.uk/', tags: ['Web design', 'Commerce'] },
-  { no: 'F02', title: 'Shree Developers Group', type: 'Real-estate web presence', url: 'https://shreedevelopersgroup.com', tags: ['Responsive UI', 'Brand'] },
-  { no: 'F03', title: 'Globetrek Tours', type: 'Premium travel experience', url: 'https://globetrek-tours-premium-travel-webs.vercel.app/', tags: ['Travel', 'Next.js'] },
-  { no: 'F04', title: 'DOHaD India', type: 'Research society website', url: 'https://dohadindia.org/', tags: ['Research', 'Web design'] },
-  { no: 'F05', title: 'The Pact', type: 'Brand website', url: 'https://thepact.in/', tags: ['Web design', 'UI'] },
-  { no: 'F06', title: 'Dress Codes', type: 'Fashion & commerce website', url: 'https://dresscodes.in/', tags: ['Commerce', 'Responsive UI'] },
-  { no: 'F07', title: 'World Safari', type: 'Travel website', url: 'https://www.worldsafari.in/', tags: ['Travel', 'UX'] },
-  { no: 'F08', title: 'Pay Pilot', type: 'Payments product interface', url: 'https://pay-pilot-one.vercel.app/', tags: ['Fintech', 'Product UI'] },
+  { no: 'F01', title: 'Codenzic Shop', type: 'React shopping cart', url: 'https://codenzic-react-shopping-cart.vercel.app/', tags: ['React', 'E-commerce'] },
+  { no: 'F02', title: 'Joseph', type: 'Brand & commerce website', url: 'https://www.josephco.uk/', tags: ['Web design', 'Commerce'] },
+  { no: 'F03', title: 'Shree Developers Group', type: 'Real-estate web presence', url: 'https://shreedevelopersgroup.com', tags: ['Responsive UI', 'Brand'] },
+  { no: 'F04', title: 'Globetrek Tours', type: 'Premium travel experience', url: 'https://globetrek-tours-premium-travel-webs.vercel.app/', tags: ['Travel', 'Next.js'] },
+  { no: 'F05', title: 'DOHaD India', type: 'Research society website', url: 'https://dohadindia.org/', tags: ['Research', 'Web design'] },
+  { no: 'F06', title: 'The Pact', type: 'Brand website', url: 'https://thepact.in/', tags: ['Web design', 'UI'] },
+  { no: 'F07', title: 'Dress Codes', type: 'Fashion & commerce website', url: 'https://dresscodes.in/', tags: ['Commerce', 'Responsive UI'] },
+  { no: 'F08', title: 'World Safari', type: 'Travel website', url: 'https://www.worldsafari.in/', tags: ['Travel', 'UX'] },
+  { no: 'F09', title: 'Pay Pilot', type: 'Payments product interface', url: 'https://pay-pilot-one.vercel.app/', tags: ['Fintech', 'Product UI'] },
 ]
 const accents = [{ name: 'Mono', value: '#d9d9d9' }, { name: 'Blue', value: '#72a7ff' }, { name: 'Lime', value: '#baff5d' }, { name: 'Violet', value: '#b49bff' }]
 const skillItems = [
@@ -214,6 +215,7 @@ export default function App() {
         <div className="hero-actions">
           <Magnetic className="pill primary">Explore my work <ArrowDownRight size={18}/></Magnetic>
           <a className="text-link" href="#about">A little more about me <ArrowDownRight size={16}/></a>
+          <a className="text-link" href="/Joel_Thomas_Resume.pdf" target="_blank" rel="noreferrer" download>Resume <ArrowDownRight size={16}/></a>
         </div>
       </motion.div>
      
@@ -293,6 +295,7 @@ export default function App() {
             <a href="https://www.linkedin.com/in/joel-thomas-89152a288/" target="_blank" rel="noreferrer"><LinkedinIcon /> LinkedIn</a>
             <a href="https://github.com/jo-ltk" target="_blank" rel="noreferrer"><GithubIcon /> GitHub</a>
             <a href="mailto:joelthomas6094@gmail.com"><Mail size={20} strokeWidth={1.75} /> Email</a>
+            <a href="tel:+918281776094"><Phone size={20} strokeWidth={1.75} /> +91 82817 76094</a>
           </div>
         </div>
       </div>
